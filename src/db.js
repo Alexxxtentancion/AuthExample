@@ -33,3 +33,7 @@ export const getToken = async (token, conn) => {
  export const setTokenExpired = async(token,conn) => {
      const [rows] = await conn.query("update session set expired = (?) where token = (?)",[1,token])
  }
+
+ export const dropToken = async(token,conn) => {
+     await conn.query("delete from session where token = ?",[token])
+ }
